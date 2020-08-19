@@ -1,6 +1,7 @@
 const Workout = require("../models/workout.js");
 const { mongo } = require("mongoose");
 
+// returns all workouts in descending order
 module.exports = function (app) {
     app.get("/api/workouts", function (req, res) {
         Workout.find({})
@@ -13,6 +14,7 @@ module.exports = function (app) {
             });
     });
 
+    // returns the seven most recent workouts in descending order
     app.get("/api/workouts/range", function (req, res) {
         Workout.find({})  
             .sort({ day: -1 })
